@@ -1,15 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Response, } from 'express';
 import { handlerError, } from '../utils/index';
 import { HttpService, } from './http.service';
 
 export class AuthService {
-	static async auth(PHPSESSID: string) {
+	static async auth(PHPSESSID: string): Promise<boolean | void> {
 		try {
 			const payload = {
 				PHPSESSID,
-			};
+			}
 
 			const response = await HttpService.sendRequest(payload);
 			if (response) {

@@ -24,6 +24,13 @@ export const config = {
 			? Number(process.env['SERVER_SHUTDOWN_TIMEOUT'])
 			: 3000,
 	},
+	redis: {
+		port: process.env['REDIS_PORT_MAIN'] ? Number(process.env['REDIS_PORT']) : 6379,
+		host: process.env['REDIS_HOST'] ? process.env['REDIS_HOST'] : 'localhost',
+		shutdownTimeout: process.env['SERVER_SHUTDOWN_TIMEOUT']
+			? Number(process.env['SERVER_SHUTDOWN_TIMEOUT'])
+			: 3000,
+	},
 	debug: process.env['DEBUG'] === 'true' ? true : false,
 	development: process.env['NODE_ENV'] === 'development' ? true : false,
 	test: process.env['NODE_ENV'] === 'test' ? true : false,
