@@ -2,6 +2,8 @@ import express, {Express,} from 'express';
 import { config, } from './config/config';
 import compression from 'compression';
 import cors from 'cors';
+import routes from './routes/routes';
+import { handlerError, } from './utils/handleError';
 
 
 const app: Express = express();
@@ -17,6 +19,8 @@ app.use(cors(corsOptions));
     
 app.use(compression());
 app.use(express.json());
+app.use('/api', routes)
+app.use(handlerError);
 
 function startServer() {
 	try {
